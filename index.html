@@ -6,129 +6,53 @@
     <title>Productivity Calculator</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f3f4f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
             margin: 0;
-        }
-        .calculator-container {
-            background: #ffffff;
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            max-width: 400px;
-            width: 100%;
-        }
-        h2 {
+            padding: 20px;
+            background-color: #f9fafb;
             text-align: center;
-            color: #1f2937;
-            margin-bottom: 20px;
         }
-        label {
-            font-weight: 600;
-            margin-top: 15px;
-            display: block;
-            color: #4b5563;
-            font-size: 14px;
+        .widget-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        input {
+        iframe {
             width: 100%;
-            padding: 12px;
-            margin-top: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-        input:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-        }
-        button {
-            width: 100%;
-            background-color: #2563eb;
-            color: white;
+            height: 600px; /* Aap apni zarurat ke hisaab se height adjust kar sakte hain */
             border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            border-radius: 4px;
+        }
+        .powered-by {
             margin-top: 15px;
+            font-size: 14px;
+            color: #555;
         }
-        button:hover {
-            background-color: #1d4ed8;
-        }
-        .result {
-            margin-top: 25px;
-            padding: 15px;
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 6px;
-            text-align: center;
-            font-size: 18px;
-            color: #1e3a8a;
-            display: none;
-        }
-        .result span {
+        .powered-by a {
+            color: #2563eb;
+            text-decoration: none;
             font-weight: bold;
-            font-size: 24px;
-            display: block;
-            margin-top: 5px;
+        }
+        .powered-by a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-<div class="calculator-container">
-    <h2>Productivity Calculator</h2>
-    
-    <label for="output">Total Output (e.g., Units Produced, Revenue)</label>
-    <input type="number" id="output" placeholder="Enter total output" required>
-    
-    <label for="input">Total Input (e.g., Hours Worked, Cost, Labor)</label>
-    <input type="number" id="input" placeholder="Enter total input" required>
-    
-    <button onclick="calculateProductivity()">Calculate</button>
-    
-    <div id="resultBox" class="result">
-        Your Productivity Ratio:
-        <span id="productivityValue">0.00</span>
-    </div>
-</div>
-
-<script>
-    function calculateProductivity() {
-        // Get values from input fields
-        let output = parseFloat(document.getElementById('output').value);
-        let input = parseFloat(document.getElementById('input').value);
-        let resultBox = document.getElementById('resultBox');
-        let resultValue = document.getElementById('productivityValue');
-
-        // Validation
-        if (isNaN(output) || isNaN(input)) {
-            alert("Please enter valid numbers in both fields.");
-            return;
-        }
-        if (input === 0) {
-            alert("Total Input cannot be zero.");
-            return;
-        }
-
-        // Calculate (Output / Input)
-        let productivity = (output / input).toFixed(2);
+    <div class="widget-container">
+        <h2>Free Productivity Calculator</h2>
+        <p>Use this tool to calculate your work efficiency and output ratio.</p>
         
-        // Display Result
-        resultValue.innerText = productivity;
-        resultBox.style.display = "block";
-    }
-</script>
+        <iframe src="https://smartlycalculators.com/calculator/productivity-calculator/" title="Productivity Calculator"></iframe>
+        
+        <div class="powered-by">
+            Powered by <a href="https://smartlycalculators.com/calculator/productivity-calculator/" target="_blank" rel="dofollow">Smartly Calculators</a>
+        </div>
+    </div>
 
 </body>
 </html>
