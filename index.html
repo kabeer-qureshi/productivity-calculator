@@ -3,47 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productivity Calculator</title>
+    
+    <title>Free Productivity Calculator | Measure Team Utilization & Revenue</title>
+    <meta name="description" content="Calculate your team's productivity, utilization gap, and revenue per employee with our free, browser-based Productivity Calculator. Find out how much revenue you are missing.">
+    <meta name="keywords" content="productivity calculator, team utilization, revenue per employee, billable hours calculator, agency productivity tool">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    
     <style>
-        
+        /* General Styling */
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Widget Section */
         .widget-container {
-            max-width:100%;
+            max-width: 100%;
             margin: 0 auto;
-           
-           
+            background-color: #fff;
+            padding: 20px 20px 40px 20px;
+        }
+
+        /* Premium Clickable Banner Animation */
+        .premium-click-banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            text-decoration: none;
+            padding: 16px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: glowing-pulse 2s infinite;
+        }
+        .premium-click-banner:hover {
+            transform: scale(1.02) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+        }
+        .premium-click-banner strong {
+            margin-left: 6px;
+            color: #fef08a; /* Soft Yellow to make brand name pop */
+        }
+        .pulse-badge {
+            margin-right: 12px;
+            font-size: 24px;
+            animation: bounce 2s infinite;
+        }
+
+        /* Keyframes for Animations */
+        @keyframes glowing-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-4px); }
+            60% { transform: translateY(-2px); }
+        }
+
+        .widget-container h1 {
+            text-align: center;
+            padding: 10px;
+            margin: 0 0 20px 0;
+            font-size: 28px;
+            color: #111;
         }
         iframe {
             width: 100%;
-           height:100vh ; /* Aap apni zarurat ke hisaab se height adjust kar sakte hain */
+            height: 700px;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
+            display: block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
-        .powered-by {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #555;
+
+        /* Content Section */
+        .content-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-        .powered-by a {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: bold;
+        .content-container h2 {
+            color: #1f2937;
+            margin-top: 40px;
+            font-size: 24px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 8px;
         }
-        .powered-by a:hover {
-            text-decoration: underline;
+        .content-container h3 {
+            color: #374151;
+            margin-top: 25px;
+            font-size: 20px;
+        }
+        .content-container p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #4b5563;
+        }
+        .formula-box {
+            background-color: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .formula-box strong {
+            color: #111;
+        }
+        
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 14px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            color: #4b5563;
+        }
+        li {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
     <div class="widget-container">
-        <h2>Free Productivity Calculator</h2>
-        <p>Use this tool to calculate your work efficiency and output ratio.</p>
         
-       <iframe src="https://smartlycalculators.com/calculator/productivity-calculator/?embed=1&#038;token=535a66737fc3d02ebd65fe315a5b3605" width="100%" height="700" style="border:0;max-width:100%;" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="SmartlyCalculators embed"></iframe>
+        <a href="https://smartlycalculators.com/calculator/productivity-calculator/" target="_blank" rel="dofollow" class="premium-click-banner">
+            <span class="pulse-badge">🚀</span> Powered by <strong>Smartly Calculators</strong>
+        </a>
+
+        <h1>Free Productivity Calculator</h1>
+        <iframe src="https://smartlycalculators.com/calculator/productivity-calculator/?embed=1&#038;token=535a66737fc3d02ebd65fe315a5b3605" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="SmartlyCalculators embed"></iframe>
         
-        <div class="powered-by">
-            Powered by <a href="https://smartlycalculators.com/calculator/productivity-calculator/" target="_blank" rel="dofollow">Smartly Calculators</a>
+    </div>
+
+    <div class="content-container">
+        <p>A productivity calculator turns billing rate, hours, and headcount into the revenue numbers leadership actually cares about. It turns billable hours and billing rate into the revenue your team actually generates at its current utilization — and the revenue it would generate at a healthier target.</p>
+
+        <h2>What Is the Productivity Calculator?</h2>
+        <p>The productivity calculator on this page is a free, browser-based tool that runs the two productivity calculations most agencies, consultancies, and operators actually need:</p>
+        <ul>
+            <li><strong>Team Utilization Mode:</strong> Takes your team size, blended billing rate, hours per week, and your current versus target utilization percentages, and returns the monthly revenue you’d unlock by closing the gap.</li>
+            <li><strong>Revenue Productivity Mode:</strong> Asks for total revenue, headcount, and weekly hours per person, then quietly multiplies by 52 weeks in the background so you never have to do annual-hours math in your head.</li>
+        </ul>
+        <p>Both modes run entirely in your browser, auto-detect your currency from your timezone, and never upload your numbers to a server. Most agencies that try a productivity calculator for the first time are surprised to find that a 35-point utilization gap (from 45% to 80%) across a five-person team at $125/hr is roughly $37,888 of unbilled revenue every month.</p>
+
+        <h2>How the Productivity Calculator Works</h2>
+        <p>Both modes are deliberately simple. In Team utilization mode, the calculator multiplies your team size by hours per week, by utilization, by 4.333 weeks per month (52 ÷ 12), and by billing rate. In Revenue productivity mode, it just divides total annual revenue by headcount for revenue per employee.</p>
+
+        <div class="formula-box">
+            <h3>The Productivity Formulas Explained</h3>
+            <p><strong>Team Utilization → Monthly Revenue</strong><br>
+            Monthly billable hours = Team size × Hours/week × (Utilization% ÷ 100) × 4.333<br>
+            Monthly revenue = Monthly billable hours × Billing rate<br>
+            Monthly gap = Revenue at target − Revenue at current</p>
+
+            <p><strong>Revenue Productivity</strong><br>
+            Revenue per employee = Total annual revenue ÷ Number of employees<br>
+            Total annual hours = Employees × Hours/week × 52<br>
+            Revenue per hour = Total annual revenue ÷ Total annual hours</p>
         </div>
+
+        <h2>Utilization Benchmarks Worth Knowing</h2>
+        <p>Raw utilization percentages are easier to read against industry benchmarks. The bands below mirror the thresholds SPI Research publish in their annual professional-services reports.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Billable Utilization</th>
+                    <th>What it usually means</th>
+                    <th>Typical for</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Under 40%</strong></td>
+                    <td>Tracking is broken — most billable time isn’t being captured.</td>
+                    <td>Newly tracked teams, week one</td>
+                </tr>
+                <tr>
+                    <td><strong>40% – 55%</strong></td>
+                    <td>Below average. Real revenue is being lost to unbilled work.</td>
+                    <td>Smaller agencies pre-tracking</td>
+                </tr>
+                <tr>
+                    <td><strong>55% – 60%</strong></td>
+                    <td>Industry average for professional-services agencies.</td>
+                    <td>Typical mid-sized agency</td>
+                </tr>
+                <tr>
+                    <td><strong>60% – 75%</strong></td>
+                    <td>Healthy. Most billable hours are being captured and billed.</td>
+                    <td>Well-run consultancies</td>
+                </tr>
+                <tr>
+                    <td><strong>75% – 85%</strong></td>
+                    <td>High performance. Common for senior billable roles at top firms.</td>
+                    <td>Top-quartile services firms</td>
+                </tr>
+                <tr>
+                    <td><strong>Above 85%</strong></td>
+                    <td>Risk zone — usually unsustainable without burnout.</td>
+                    <td>Rarely a steady-state target</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>How to Use the Productivity Calculator</h2>
+        <ol>
+            <li><strong>Pick the mode:</strong> Tap <em>Team utilization</em> for the revenue gap calculation, or <em>Revenue productivity</em> for the per-employee breakdown.</li>
+            <li><strong>Confirm or change the currency:</strong> The tool auto-detects from your browser timezone (PKR, USD, GBP, EUR, etc.).</li>
+            <li><strong>Enter team size, billing rate, and hours:</strong> Type the headcount, your blended hourly rate, and standard hours per week.</li>
+            <li><strong>Drag the utilization sliders:</strong> Set your current utilization and target (usually 70–80%). The monthly gap updates live.</li>
+        </ol>
+
+        <h2>Common Mistakes With Productivity Calculators</h2>
+        <ul>
+            <li><strong>Targeting 100% utilization:</strong> Nobody hits 100% sustainably. 70–80% is the honest target.</li>
+            <li><strong>Confusing total hours with billable hours:</strong> The utilization formula expects total tracked hours in the denominator and billable hours in the numerator.</li>
+            <li><strong>Using an outdated blended rate:</strong> Refresh the rate whenever a senior role joins or leaves to get accurate data.</li>
+        </ul>
+        
     </div>
 
 </body>
