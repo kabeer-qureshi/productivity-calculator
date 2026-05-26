@@ -7,10 +7,7 @@
     <title>Free Productivity Calculator | Measure Team Utilization & Revenue</title>
     <meta name="description" content="Calculate your team's productivity, utilization gap, and revenue per employee with our free, browser-based Productivity Calculator.">
     <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/x-icon" href="https://smartlycalculators.com/wp-content/uploads/2026/05/Smartly-Calculators-Favicon-1.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://smartlycalculators.com/wp-content/uploads/2026/05/Smartly-Calculators-Favicon-1.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://smartlycalculators.com/wp-content/uploads/2026/05/Smartly-Calculators-Favicon-1.png">
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
@@ -23,15 +20,16 @@
             background-color: #f9fafb;
             color: #333;
             line-height: 1.6;
-            overflow-x: hidden; /* Horizontal scroll rokne ke liye */
+            overflow-x: hidden;
         }
 
-        /* --- Main Layout --- */
+        /* --- Layout Container --- */
         .widget-container {
             max-width: 100%;
             margin: 0 auto;
             background-color: #fff;
-            padding: 20px 20px 40px 20px;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         /* --- Premium Top & Bottom Banner --- */
@@ -43,31 +41,32 @@
             color: white;
             text-decoration: none;
             padding: 16px 20px;
-            font-size: 18px;
+            font-size: 16px;
             border-radius: 8px;
             margin: 10px auto 25px auto;
             max-width: 860px;
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             animation: glowing-pulse 2s infinite;
+            text-align: center;
+            box-sizing: border-box;
         }
         .premium-click-banner:hover {
             transform: scale(1.02) translateY(-2px);
             box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
-            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
         }
         .premium-click-banner strong {
             margin-left: 6px;
             color: #fef08a; 
         }
 
-        /* --- Glassmorphism Fixed Side Banners --- */
+        /* --- Fixed Side Banners (Desktop Only) --- */
         .side-banner {
             position: fixed;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(37, 99, 235, 0.85); /* Semi-transparent blue */
-            backdrop-filter: blur(8px); /* Glass effect */
+            background: rgba(37, 99, 235, 0.85);
+            backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             color: white;
             text-decoration: none;
@@ -77,44 +76,34 @@
             border-radius: 8px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            writing-mode: vertical-rl; /* Text vertically align karne ke liye */
+            writing-mode: vertical-rl;
             text-orientation: mixed;
             transition: all 0.3s ease;
             z-index: 1000;
         }
-        .side-banner:hover {
-            background: rgba(29, 78, 216, 0.95);
-            padding-top: 30px; /* Hover par thora expand hoga */
-            padding-bottom: 30px;
-        }
         .side-banner-left { left: 10px; transform: translateY(-50%) rotate(180deg); }
         .side-banner-right { right: 10px; }
 
-        .pulse-badge { margin-right: 12px; font-size: 24px; animation: bounce 2s infinite; }
+        .pulse-badge { margin-right: 8px; font-size: 20px; display: inline-block; }
 
         @keyframes glowing-pulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); }
             70% { box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
         }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-4px); }
-            60% { transform: translateY(-2px); }
-        }
 
-        .widget-container h1 { text-align: center; padding: 10px; margin: 0 0 20px 0; font-size: 28px; color: #111; }
+        .widget-container h1 { text-align: center; padding: 10px; margin: 0 0 10px 0; font-size: 26px; color: #111; }
         
-        /* Iframe Initial Settings */
+        /* Iframe Responsive Styling */
         iframe {
             width: 100%;
-            min-height: 700px; /* Default height jab tak script load na ho */
+            height: 800px; /* Default height jab tak script load na ho */
             border: none;
             border-radius: 8px;
             display: block;
-            overflow: hidden; /* Andar ka scroll band */
+            overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: height 0.3s ease; /* Smooth height change */
+            transition: height 0.2s ease;
         }
 
         /* --- Content Layout --- */
@@ -122,14 +111,18 @@
             max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
+            box-sizing: border-box;
         }
-        .content-container h2 { color: #1f2937; margin-top: 40px; font-size: 24px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
-        .content-container h3 { color: #374151; margin-top: 25px; font-size: 20px; }
+        .content-container h2 { color: #1f2937; margin-top: 35px; font-size: 22px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
         .content-container p { margin-bottom: 16px; font-size: 16px; color: #4b5563; }
         
-        /* Mobile Responsiveness for side banners */
+        /* --- Mobile Responsive Fixes --- */
         @media (max-width: 768px) {
-            .side-banner { display: none; } /* Mobile par side banners hide kiye hain taake UX khrab na ho */
+            .side-banner { display: none; } /* Hide side banners on mobile */
+            .widget-container { padding: 10px; } /* Reduce padding to give iframe full width */
+            .widget-container h1 { font-size: 22px; }
+            .premium-click-banner { font-size: 14px; padding: 12px 15px; }
+            iframe { height: 1200px; } /* Mobile default safely higher before script execution */
         }
     </style>
 </head>
@@ -157,29 +150,26 @@
     <div class="content-container">
         <p>A productivity calculator turns billing rate, hours, and headcount into the revenue numbers leadership actually cares about. It turns billable hours and billing rate into the revenue your team actually generates at its current utilization — and the revenue it would generate at a healthier target.</p>
         
-        <a href="https://smartlycalculators.com/calculator/productivity-calculator/" target="_blank" rel="dofollow" class="premium-click-banner" style="margin: 40px auto;">
+        <a href="https://smartlycalculators.com/calculator/productivity-calculator/" target="_blank" rel="dofollow" class="premium-click-banner" style="margin: 30px auto;">
             <span class="pulse-badge">📈</span> Get More Insights at <strong>Smartly Calculators</strong>
         </a>
 
         <h2>What Is the Productivity Calculator?</h2>
-        <p>The productivity calculator on this page is a free, browser-based tool that runs the two productivity calculations most agencies, consultancies, and operators actually need:</p>
-        <ul>
-            <li><strong>Team Utilization Mode:</strong> Takes your team size, blended billing rate, hours per week, and your current versus target utilization percentages, and returns the monthly revenue you’d unlock by closing the gap.</li>
-            <li><strong>Revenue Productivity Mode:</strong> Asks for total revenue, headcount, and weekly hours per person, then quietly multiplies by 52 weeks in the background so you never have to do annual-hours math in your head.</li>
-        </ul>
-        <p>Both modes run entirely in your browser, auto-detect your currency from your timezone, and never upload your numbers to a server.</p>
+        <p>The productivity calculator on this page is a free, browser-based tool that runs the two productivity calculations most agencies, consultancies, and operators actually need.</p>
     </div>
 
     <script>
         window.addEventListener('message', function(event) {
-            // Security Check: Sirf apni site ka data accept karein
+            // Target origin validator
             if (event.origin !== 'https://smartlycalculators.com') return;
 
-            // Agar message height set karne ka hai
             if (event.data && event.data.type === 'setHeight') {
                 const iframe = document.getElementById('calcIframe');
-                // Iframe ki height update kar dein (thori extra padding ke sath taake border na kate)
-                iframe.style.height = (event.data.height + 20) + 'px';
+                if (iframe) {
+                    // Mobile scaling padding logic
+                    const padding = window.innerWidth < 768 ? 40 : 20;
+                    iframe.style.height = (event.data.height + padding) + 'px';
+                }
             }
         });
     </script>
